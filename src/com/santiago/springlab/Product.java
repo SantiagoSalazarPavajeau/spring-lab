@@ -4,20 +4,26 @@ public class Product {
 
 	int pid;
 	String pname;
-	String pdescription;
+	Store store;
 	
 	public Product (){
-		
+		System.out.println("PRODUCT CONSTRUCTED");
+	}
+	
+	public Product(Store store) {
+		this.store = store; // injection 
 	}
 	// source generate constructor from fields
-	public Product(int pid, String pname, String pdescription) {
+	public Product(int pid, String pname, Store store) {
 		super();
 		this.pid = pid;
 		this.pname = pname;
-		this.pdescription = pdescription;
+		this.store = store;
 	}
 	
 	// source generate setters and getters
+
+
 	public int getPid() {
 		return pid;
 	}
@@ -34,17 +40,26 @@ public class Product {
 		this.pname = pname;
 	}
 
-	public String getPdescription() {
-		return pdescription;
+	public Store getStore() {
+		return store;
 	}
 
-	public void setPdescription(String pdescription) {
-		this.pdescription = pdescription;
+	public void setStore(Store store) {
+		System.out.println("setter");
+		this.store = store; // setter injection
 	}
 
+	public void customInit() {
+		System.out.println("Custom initialized");
+	}
+
+	public void customDestroy() {
+		System.out.println("Custom destroyed");
+	}
+	
 	@Override
 	public String toString() {
-		return "Product [pid=" + pid + ", pname=" + pname + ", pdescription=" + pdescription + "]";
+		return "Product [pid=" + pid + ", pname=" + pname + ", store=" + store + "]";
 	}
 	
 	
